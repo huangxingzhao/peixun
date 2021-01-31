@@ -1,0 +1,25 @@
+课程主题
+	手写spring基础容器和阅读spring基础容器源码
+		
+
+课程回顾
+	1.spring基础容器的BeanDefinition注册流程
+		配置文件的加载、解析、BeanDefinition的创建和注册
+		
+	BeanDefinition（bean标签）--->List<PropertyValue>（property标签）---->Object value（value或者ref属性）
+		TypedStringValue		-----value属性
+		RuntimeBeanReference	-----ref属性
+	
+课程内容
+	spring源码阅读
+		1.确定主线（BeanDefinition的注册流程、bean实例的创建流程）
+		2.找入口
+			BeanDefinition的注册流程入口：
+			XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+			reader.loadBeanDefinitions(resource);
+			
+			bean实例的创建流程的入口：
+			Student student = (Student) beanFactory.getBean("student");
+			public Object getBean(String name) throws BeansException {
+				return doGetBean(name, null, null, false);
+			}
